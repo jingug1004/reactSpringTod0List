@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 
 const Todo = (props) => {
-  // const [item, setItem] = useState(props.item);
-  const [item, setItem] = useState({
-    id: 0,
-    title: "hello world 1",
-    done: false,
-  });
+  let item = props;
 
   return (
     <div className={"Todo"}>
       <input
         type={"checkbox"}
-        id={item.id}
-        name={item.id}
-        checked={item.done}
+        id={item.item2.id}
+        name={item.item2.id}
+        defaultChecked={item.item2.done}
       />
-      <label id={item.id}>{item.title}</label>
+      <label id={item.item2.id}>{item.item2.title}</label>
     </div>
   );
 };
