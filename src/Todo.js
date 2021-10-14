@@ -1,18 +1,24 @@
 import React, { useState } from "react";
+import { ListItem, ListItemText, InputBase, Checkbox } from "@material-ui/core";
 
 const Todo = (props) => {
-  let item = props;
+  const item = props.item2;
 
   return (
-    <div className={"Todo"}>
-      <input
-        type={"checkbox"}
-        id={item.item2.id}
-        name={item.item2.id}
-        defaultChecked={item.item2.done}
-      />
-      <label id={item.item2.id}>{item.item2.title}</label>
-    </div>
+    <ListItem>
+      <Checkbox checked={item.done} />
+      <ListItemText>
+        <InputBase
+          inputProps={{ "aria-label": "naked" }}
+          type={"text"}
+          id={item.id.toString()}
+          name={item.id.toString()}
+          value={item.title}
+          multiline={true}
+          fullWidth={true}
+        />
+      </ListItemText>
+    </ListItem>
   );
 };
 
