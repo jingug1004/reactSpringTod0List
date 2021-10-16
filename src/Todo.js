@@ -1,8 +1,21 @@
 import React, { useState } from "react";
-import { ListItem, ListItemText, InputBase, Checkbox } from "@material-ui/core";
+import {
+  ListItem,
+  ListItemText,
+  InputBase,
+  Checkbox,
+  ListItemSecondaryAction,
+  IconButton,
+} from "@material-ui/core";
+import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 
 const Todo = (props) => {
-  const item = props.item2;
+  const item = props.appItem;
+  const delet = props.delete;
+
+  const deleteEventHandler = () => {
+    delet(item);
+  };
 
   return (
     <ListItem>
@@ -18,6 +31,11 @@ const Todo = (props) => {
           fullWidth={true}
         />
       </ListItemText>
+      <ListItemSecondaryAction>
+        <IconButton aria-label={"Delete Todo"} onClick={deleteEventHandler}>
+          <DeleteOutlined />
+        </IconButton>
+      </ListItemSecondaryAction>
     </ListItem>
   );
 };
