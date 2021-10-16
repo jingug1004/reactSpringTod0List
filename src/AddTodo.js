@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ListItem, ListItemText, InputBase, Checkbox } from "@material-ui/core";
 import { TextField, Paper, Button, Grid } from "@material-ui/core";
 
 const AddTodo = (props) => {
@@ -8,11 +7,15 @@ const AddTodo = (props) => {
   const [item, setItem] = useState({ title: "" });
 
   const onInputChange = (e) => {
+    setItem({ title: e.target.value });
+    console.log("l~ thisItem : ", item);
+    /*
     let thisItem = item;
     // thisItem.title = e.target.value;
     // setItem({ item: thisItem });
     setItem({ title: e.target.value });
     console.log("l~ thisItem : ", thisItem);
+*/
   };
 
   const onButtonClick = () => {
