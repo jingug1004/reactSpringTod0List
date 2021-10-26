@@ -13,12 +13,30 @@ export function call(api, method, request) {
     options.body = JSON.stringify(request);
   }
 
-  return fetch(options.url, options).then((response) =>
-    response.json().then((json) => {
-      if (!response.ok) {
-        return Promise.reject(json);
+  return fetch(options.url, options)
+    .then((response) =>
+      response.json().then((json) => {
+        if (!response.ok) {
+          return Promise.reject(json);
+        }
+        return json;
+      }),
+    )
+    .catch((error) => {
+      console.log("l~ error.status : ", error.status);
+      if (error.status === 403) {
+        window.location.href = "/login";
       }
-      return json;
-    }),
-  );
+      return Promise.reject(error);
+    });
+}
+
+export function signin(userDTO) {
+  return call("/auth/signin", "POST", userDTO).then((response) => {
+    // console.log("l~ response : ", response);
+    // alert("l~ 로그인 토큰 : " + response.token);
+    if (response.token) {
+      window.location.href = "/";
+    }
+  });
 }
