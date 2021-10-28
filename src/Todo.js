@@ -40,20 +40,20 @@ const Todo = (props) => {
   };
 
   // <InputBase onChange
-  const editEventHandler = useCallback((e) => {
+  const editEventHandler = (e) => {
     const thisItem = item;
     thisItem.title = e.target.value;
     console.log("l~ editEventHandler thisItem : ", thisItem);
 
     // 임시로 useState 쓰니 e.t.v 할 때 계속 이어짐. 정상적으로 잘 됨.
     setTe(e.target.value);
-  });
+  };
 
   // <Checkbox checked={item.done} onChange={checkboxEventHandler} />
-  const checkboxEventHandler = useCallback((e) => {
+  const checkboxEventHandler = (e) => {
     setItem({ done: !item.done });
     update(item); // 체크박스가 변경되면 저장
-  });
+  };
 
   return (
     <ListItem>

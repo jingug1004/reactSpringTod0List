@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import "./index.css";
 import App from "./App";
 import Login from "./Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import SignUp from "./SignUp";
 
 const AppRouter = (props) => {
   const Copyright = () => {
@@ -24,6 +25,9 @@ const AppRouter = (props) => {
           <Switch>
             <Route path={"/login"}>
               <Login />
+            </Route>
+            <Route path={"/signup"}>
+              <SignUp />
             </Route>
             <Route path={"/"}>
               <App />
